@@ -35,11 +35,11 @@ CMD ["/bin/sh"]
 DOCKERFILE
 
 cd $DOCKER_ROOT
-docker build --no-cache -t skwashd/alpine:3.8 .
+docker build --no-cache -t mpsoftdenamrk/alpine:3.8 .
 cd -
 
 docker build --build-arg MS_TOKEN="${MS_TOKEN}" - <<'DOCKERFILE'
-FROM skwashd/alpine:3.8
+FROM mpsoftdenamrk/alpine:3.8
 ARG MS_TOKEN
 RUN wget https://get.aquasec.com/microscanner -O /home/worker/microscanner \
   && echo "8e01415d364a4173c9917832c2e64485d93ac712a18611ed5099b75b6f44e3a5  /home/worker/microscanner" | sha256sum -c - \
