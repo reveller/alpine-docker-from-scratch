@@ -23,9 +23,4 @@ allow you to be confident that you are using the latest version of Alpine
 Linux with all available updates. I am not suggesting that these images are
 secure. You need to do your own homework on that.
 
-## Support
-I will maintain this while I am using images based off it on a best effort 
-basis. If you don't understand what's happening in the scripts, then I
-recommend you use the official images.
-
-Built by [Dave Hall Consulting](https://davehall.com.au).
+Project frorked from [Dave Hall Consulting](https://davehall.com.au).
