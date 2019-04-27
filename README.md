@@ -23,4 +23,4 @@ allow you to be confident that you are using the latest version of Alpine
 Linux with all available updates. I am not suggesting that these images are
 secure. You need to do your own homework on that.
 
-Project frorked from [Dave Hall Consulting](https://davehall.com.au).
+Project forked from [skwashd/alpine-docker-from-scratch](https://github.com/skwashd/alpine-docker-from-scratch).
