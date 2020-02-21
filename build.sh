@@ -2,7 +2,7 @@
 
 set -ex
 
-ALPINE_VER="3.11"
+ALPINE_VER="${RELEASE}"
 PACKAGES="apk-tools ca-certificates ssl_client"
 MS_TOKEN="OWJjZTQwMjczMDk3"
 
@@ -18,14 +18,11 @@ MS_ROOT="${DOCKER_ROOT}/../microscanner"
 POST_INSTALL="./post-install.sh"
 
 # Download rootfs builder and verify it.
-#wget https://raw.githubusercontent.com/alpinelinux/alpine-make-rootfs/v0.3.1/alpine-make-rootfs -O "$MKROOTFS" \
-#    && echo "832987f3c138c67b1f1a01f7ab961a029ebcac8b  $MKROOTFS" | sha1sum -c \
-#    || exit 1
-wget https://raw.githubusercontent.com/alpinelinux/alpine-make-rootfs/v0.5.0/alpine-make-rootfs -O "$MKROOTFS" \
-    && echo "bb4869675fd4309755cab0ef4c4a25a9d37349fa3f5753d160bb1a80170a7f70  $MKROOTFS" | sha256sum -c \
+wget https://raw.githubusercontent.com/alpinelinux/alpine-make-rootfs/v0.5.1/alpine-make-rootfs -O "$MKROOTFS" \
+    && echo "a7159f17b01ad5a06419b83ea3ca9bbe7d3f8c03  $MKROOTFS" | sha1sum -c \
     || exit 1
 
-chmod +x ${MKROOTFS}
+chmod +x "${MKROOTFS}"
 
 sudo ${MKROOTFS} --mirror-uri http://dl-2.alpinelinux.org/alpine \
 	--branch "v${ALPINE_VER}" \
@@ -42,11 +39,11 @@ CMD ["/bin/sh"]
 DOCKERFILE
 
 cd $DOCKER_ROOT
-docker build --no-cache -t reveller/alpine:3.11 .
+docker build --no-cache -t reveller/alpine:${RELEASE} .
 cd -
 
-docker build --build-arg MS_TOKEN="${MS_TOKEN}" - <<'DOCKERFILE'
-FROM reveller/alpine:3.11
+docker build --build-arg MS_TOKEN="${MS_TOKEN}" - <<DOCKERFILE
+FROM reveller/alpine:${RELEASE}
 ARG MS_TOKEN
 RUN wget https://get.aquasec.com/microscanner -O /home/worker/microscanner \
   && echo "8e01415d364a4173c9917832c2e64485d93ac712a18611ed5099b75b6f44e3a5  /home/worker/microscanner" | sha256sum -c - \
