@@ -4,7 +4,9 @@ set -ex
 
 ALPINE_VER="${RELEASE}"
 PACKAGES="apk-tools ca-certificates ssl_client"
-MS_TOKEN="OWJjZTQwMjczMDk3"
+
+# Registered to sfeltner@godaddy.com
+MS_TOKEN="NGZkOTlmOWExNjhl"
 
 MKROOTFS="/tmp/alpine-make-rootfs"
 BUILD_TAR="/tmp/docker/alpine-rootfs-${ALPINE_VER}.tar.gz"
